@@ -3,7 +3,7 @@ const router = express.Router();
 const connection = require('../connection');
 
 router.route("/").get((req,res)=>{
-    connection.query('SELECT * FROM English',(err,rows)=>{
+    connection.query('SELECT * FROM Eng',(err,rows)=>{
         if(err){
             console.log(err);
         }else{
@@ -13,7 +13,7 @@ router.route("/").get((req,res)=>{
 })
 
 router.route("/:id").get((req,res)=>{
-    connection.query('SELECT * FROM English WHERE id=?',[req.params.id],(err,rows)=>{
+    connection.query('SELECT * FROM Eng WHERE id=?',[req.params.id],(err,rows)=>{
         if(err){
             console.log(err);
         }else{
@@ -23,7 +23,7 @@ router.route("/:id").get((req,res)=>{
 })
 
 router.route("/:id").delete((req,res)=>{
-    connection.query('DELETE FROM English WHERE id=?',[req.params.id],(err,rows)=>{
+    connection.query('DELETE FROM Eng WHERE id=?',[req.params.id],(err,rows)=>{
         if(err){
             console.log(err);
         }else{
@@ -35,7 +35,7 @@ router.route("/:id").delete((req,res)=>{
 router.route("/").post((req,res)=>{
     var data = req.body
     var Data = [data.id,data.word]
-    connection.query('INSERT INTO English(id,word) values(?)',[Data],(err,rows)=>{
+    connection.query('INSERT INTO Eng(id,word) values(?)',[Data],(err,rows)=>{
         if(err){
             console.log(err);
         }else{
@@ -46,7 +46,7 @@ router.route("/").post((req,res)=>{
 
 router.route("/").get((req,res)=>{
     var data = req.body
-    connection.query('UPDATE English SET ? WHERE id='+data.id,[data],(err,rows)=>{
+    connection.query('UPDATE Eng SET ? WHERE id='+data.id,[data],(err,rows)=>{
         if(err){
             console.log(err);
         }else{
